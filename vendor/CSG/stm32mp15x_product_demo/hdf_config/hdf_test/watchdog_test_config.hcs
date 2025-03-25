@@ -1,0 +1,8 @@
+root {
+    module = "watchdog";
+    watchdog_config {
+        watchdog_controller_tester {
+            match_attr = "WATCHDOG_TEST";
+        }
+    }
+}

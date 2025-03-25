@@ -1,0 +1,40 @@
+root {
+    platform {
+        spi_config {
+            template spi_controller {
+                serviceName = "";
+                match_attr = "";
+                busNum = 0;
+                numCs = 0;
+            }
+
+            controller_0x44004000 :: spi_controller {
+                busNum = 1;
+                numCs = 1;
+                match_attr = "st_stm32mp157_spi_1";
+            }
+
+            controller_0x4000b000 :: spi_controller {
+                match_attr = "st_stm32mp157_spi_2";
+                busNum = 2;
+                numCs = 1;
+            }
+
+            controller_0x4000c000 :: spi_controller {
+                match_attr = "st_stm32mp157_spi_3";
+                busNum = 3;
+                numCs = 3;
+            }
+            controller_0x44005000 :: spi_controller {
+                match_attr = "st_stm32mp157_spi_4";
+                busNum = 4;
+                numCs = 4;
+            }
+            controller_0x44009000 :: spi_controller {
+                match_attr = "st_stm32mp157_spi_5";
+                busNum = 5;
+                numCs = 5;
+            }
+        }
+    }
+}

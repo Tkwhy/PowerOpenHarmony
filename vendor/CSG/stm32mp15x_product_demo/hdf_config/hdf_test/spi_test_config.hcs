@@ -1,0 +1,18 @@
+root {
+    spi_test1 {
+        module = "spi_test";
+        match_attr = "SPI_TEST_1";
+        bus = 1;
+        cs = 0;
+        len = 1;
+        wbuf = [0x9f];
+    }
+    spi_test2 {
+        module = "spi_test";
+        match_attr = "SPI_TEST_2";
+        bus = 2;
+        cs = 0;
+        len = 1;
+        wbuf = [0x9f];
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "parts": {
+    "product_gr5515_sk_iotlink_test": {
+      "module_list": [
+        "//vendor/goodix/gr5515_sk_iotlink_test:gr5515_sk_iotlink_test",
+        "//vendor/goodix/gr5515_sk_iotlink_test:image"
+      ]
+    }
+  },
+  "subsystem": "product_gr5515_sk_iotlink_test"
+}

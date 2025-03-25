@@ -1,0 +1,36 @@
+{
+    "name": "@ohos/apm32f407_can",
+    "description": "apm32f407 can samples.",
+    "version": "3.1",
+    "license": "Apache License 2.0",
+    "publishAs": "code-segment",
+    "segment": {
+        "destPath": "applications/sample/apm32f407_can"
+    },
+    "dirs": {},
+    "scripts": {},
+    "component": {
+        "name": "apm32f407_can",
+        "subsystem": "applications",
+        "syscap": [],
+        "features": [],
+        "adapted_system_type": [
+            "mini"
+        ],
+        "rom": "",
+        "ram": "",
+        "deps": {
+            "components": [
+                "c_utils"
+            ],
+            "third_party": []
+        },
+        "build": {
+            "sub_component": [
+                "//applications/sample/apm32f407_can:myapp"
+            ],
+            "inner_kits": [],
+            "test": []
+        }
+    }
+}

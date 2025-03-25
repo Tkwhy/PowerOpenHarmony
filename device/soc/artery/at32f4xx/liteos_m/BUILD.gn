@@ -1,0 +1,63 @@
+# Copyright (C) 2022 HiHope Open Source Organization .
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//kernel/liteos_m/liteos.gni")
+module_name = get_path_info(rebase_path("."), "name")
+kernel_module(module_name) {
+  sources = [ "startup/startup_at32f403a_407.s" ]
+
+  sources += [
+    "src/at32f403a_407_board.c",
+    "src/at32f403a_407_clock.c",
+    "src/main.c",
+    "src/system_at32f403a_407.c",
+    "src/dprintf.c",
+    #"src/usart.c",
+    "src/flash.c",
+  ]
+
+  include_dirs = [
+    ".",
+    "include",
+  ]
+}
+
+config("public") {
+  ldflags = [
+      "-Wl,-T" + rebase_path("startup/AT32F403AxC_FLASH.ld"),
+      "-Wl,-u_printf_float",
+      "-Wl,-Map=" + rebase_path("$root_out_dir/bin/CSG-CHNT.map"),
+  ]
+
+  include_dirs = [
+    ".",
+    "include",
+    "../libraries/drivers/inc",
+    "//drivers/hdf_core/framework/core/common/include/manager",
+    "//drivers/hdf_core/framework/include/utils",
+    "//drivers/hdf_core/adapter/khdf/liteos_m/osal/include",
+    "//drivers/hdf_core/framework/include/core",
+    "//drivers/hdf_core/interfaces/inner_api/utils/",
+    "//drivers/hdf_core/framework/core/common/include/host",
+    "//kernel/liteos_m/arch/arm/cortex-m4/gcc/",
+    "//base/update/ota_lite/interfaces/kits",
+    "//drivers/hdf_core/framework/include/osal",
+  ]
+
+  libs = [
+    "gcc",
+    "m",
+    "c",
+    "nosys",
+  ]
+}

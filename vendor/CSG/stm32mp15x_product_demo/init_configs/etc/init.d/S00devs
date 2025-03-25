@@ -1,0 +1,7 @@
+#!/bin/sh
+
+mknod /dev/console c 5 1
+mknod /dev/ttySTM0 c 245 65
+mknod /dev/null c 1 3
+
+

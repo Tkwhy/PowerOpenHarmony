@@ -1,0 +1,13 @@
+#include "device/gpio/gpio_config.hcs"
+#include "device/i2c/i2c_config_linux.hcs"
+#include "device/watchdog/watchdog_config_linux.hcs"
+#include "device/uart/uart_config_linux.hcs"
+#include "device/spi/spi_config_linux.hcs"
+
+#include "device_info/device_info.hcs"
+#include "input/input_config.hcs"
+#include "sensor/sensor_config.hcs"
+
+root {
+    module = "st,stm32mp157";
+}

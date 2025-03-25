@@ -1,0 +1,29 @@
+# Copyright (C) 2020 Hisilicon (Shanghai) Technologies Co., Ltd. All rights reserved.
+
+import("//device/soc/artery/at32f4xx/util/util.gni")
+at32f4xxx_firmware("at32f4xx_product_demo") {
+  explicit_libs = [
+    "bootstrap",
+    "broadcast",
+    
+  ]
+  
+  if (build_xts == true) {
+    explicit_libs += [
+      "hctest",
+      #xts分开跑
+      #part1
+      #"huks_test_common",
+      #"module_ActsUpdaterFuncTest",
+      #"module_ActsHuksHalFunctionTest",
+      #"module_ActsBootstrapTest",
+      #part2
+      "module_ActsDfxFuncTest",
+      "module_ActsHieventLiteTest",
+      "module_ActsSamgrTest",
+    ]
+  }
+
+  deps = [ "//build/lite:ohos" ]
+
+}

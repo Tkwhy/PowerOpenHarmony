@@ -1,0 +1,36 @@
+{
+    "name": "@ohos/my_first_app",
+    "description": "Wifi iot my first samples.",
+    "version": "3.1",
+    "license": "Apache License 2.0",
+    "publishAs": "code-segment",
+    "segment": {
+        "destPath": "applications/sample/my_first_app"
+    },
+    "dirs": {},
+    "scripts": {},
+    "component": {
+        "name": "my_first_app",
+        "subsystem": "applications",
+        "syscap": [],
+        "features": [],
+        "adapted_system_type": [
+            "mini"
+        ],
+        "rom": "",
+        "ram": "",
+        "deps": {
+            "components": [
+                "c_utils"
+            ],
+            "third_party": []
+        },
+        "build": {
+            "sub_component": [
+                "//applications/sample/my_first_app:myapp"
+            ],
+            "inner_kits": [],
+            "test": []
+        }
+    }
+}

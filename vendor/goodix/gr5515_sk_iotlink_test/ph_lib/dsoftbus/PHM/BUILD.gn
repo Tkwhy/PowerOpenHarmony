@@ -1,0 +1,27 @@
+import("//build/lite/config/component/lite_component.gni")
+import("//build/lite/ndk/ndk.gni")
+
+if (defined(ohos_lite)) { 
+    copy("dsoftbus_ph_lib") { 
+       sources = [
+         "libs/libphsoftbus_adapter.a",
+         "libs/libphsoftbus_client.a",
+         "libs/libphsoftbus_server_frame.a",
+         "libs/libphsoftbus_utils.a",
+       ]
+       outputs = [ "$root_out_dir/libs/{{source_file_part}}" ]
+    }
+
+    group("softbus_server") {
+      deps = [
+        ":dsoftbus_ph_lib"
+      ]
+    }
+
+    lite_component("dsoftbus_ph") {
+      print("dsoftbus_ph!")
+      features = [
+        ":softbus_server",
+      ]
+    }
+}

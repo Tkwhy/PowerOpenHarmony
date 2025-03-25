@@ -1,0 +1,9 @@
+#! /bin/sh
+
+echo "ohos_service_start"
+mknod /dev/hilog c 100 1
+chmod 666 /dev/hilog
+mknod /dev/hwlog_exception   c 101 1
+chmod 666 /dev/hwlog_exception
+chmod 777 /dev/sys
+chmod 777 /dev/mem

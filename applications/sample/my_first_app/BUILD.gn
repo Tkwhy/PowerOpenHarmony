@@ -1,0 +1,10 @@
+import("//kernel/liteos_m/liteos.gni")
+source_set ("myapp") {
+    sources = [ 
+    #"hello_world.c"
+]
+    include_dirs = [
+        "//commonlibrary/utils_lite/include",
+        "//kernel/liteos_m/kernel/include/"
+    ]
+}

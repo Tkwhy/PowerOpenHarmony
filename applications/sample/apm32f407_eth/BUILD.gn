@@ -1,0 +1,15 @@
+import("//kernel/liteos_m/liteos.gni")
+source_set ("myapp") {
+    sources = [ 
+    #"apm32f407_tcp_eth.c",
+    #"board_LAN8720A.c",
+    #"board_DP83848.c",
+    #"ethernetif.c",
+]
+    include_dirs = [
+        "//commonlibrary/utils_lite/include",
+        "//kernel/liteos_m/kernel/include/",
+        "include/",
+        "."
+    ]
+}

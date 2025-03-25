@@ -1,0 +1,10 @@
+{
+  "subsystem": "device_at32f4_board",
+  "parts": {
+    "device_at32f4_board": {
+      "module_list": [
+        "//device/board/csg/at32f4_board:at32f4_board"
+      ]
+    }
+  }
+}

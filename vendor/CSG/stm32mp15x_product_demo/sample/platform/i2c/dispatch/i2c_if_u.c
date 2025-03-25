@@ -1,0 +1,253 @@
+/*
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
+ *
+ * HDF is dual licensed: you can use it either under the terms of
+ * the GPL, or the BSD license, at your option.
+ * See the LICENSE file in the root of this repository for complete details.
+ */
+
+#include "hdf_base.h"
+#include "hdf_io_service_if.h"
+#include "hdf_log.h"
+#include "i2c_if.h"
+#include "i2c_service.h"
+#include "securec.h"
+
+#define HDF_LOG_TAG i2c_if_u
+
+#define I2C_SERVICE_NAME "HDF_PLATFORM_I2C_MANAGER"
+
+static struct HdfIoService *I2cManagerGetService(void)
+{
+    static struct HdfIoService *service = NULL;
+
+    if (service != NULL) {
+        return service;
+    }
+    service = HdfIoServiceBind(I2C_SERVICE_NAME);
+    if (service == NULL) {
+        HDF_LOGE("I2cManagerGetService: fail to get i2c service!");
+    }
+    return service;
+}
+
+DevHandle I2cOpen(int16_t number)
+{
+    int32_t ret;
+    struct HdfIoService *service = NULL;
+    struct HdfSBuf *data = NULL;
+    struct HdfSBuf *reply = NULL;
+    uint32_t handle = 0;
+
+    service = I2cManagerGetService();
+    if (service == NULL || service->dispatcher == NULL || service->dispatcher->Dispatch == NULL) {
+        HDF_LOGE("I2cOpen: service is invalid!");
+        return NULL;
+    }
+    data = HdfSbufObtainDefaultSize();
+    if (data == NULL) {
+        HDF_LOGE("I2cOpen: obtain data fail!");
+        return NULL;
+    }
+    reply = HdfSbufObtainDefaultSize();
+    if (reply == NULL) {
+        HDF_LOGE("I2cOpen: obtain reply fail!");
+        HdfSbufRecycle(data);
+        return NULL;
+    }
+
+    if (!HdfSbufWriteUint16(data, (uint16_t)number)) {
+        HDF_LOGE("I2cOpen: write number fail!");
+        goto EXIT;
+    }
+
+    ret = service->dispatcher->Dispatch(&service->object, I2C_IO_OPEN, data, reply);
+    if (ret != HDF_SUCCESS) {
+        HDF_LOGE("I2cOpen: service call open fail:%d", ret);
+        goto EXIT;
+    }
+
+    if (!HdfSbufReadUint32(reply, &handle)) {
+        HDF_LOGE("I2cOpen: read handle fail!");
+        goto EXIT;
+    }
+EXIT:
+    HdfSbufRecycle(data);
+    HdfSbufRecycle(reply);
+    return (handle == 0) ? NULL : (DevHandle)(uintptr_t)handle;
+}
+
+void I2cClose(DevHandle handle)
+{
+    int32_t ret;
+    struct HdfIoService *service = NULL;
+    struct HdfSBuf *data = NULL;
+
+    service = I2cManagerGetService();
+    if (service == NULL || service->dispatcher == NULL || service->dispatcher->Dispatch == NULL) {
+        HDF_LOGE("I2cOpen: service is invalid!");
+        return;
+    }
+
+    data = HdfSbufObtainDefaultSize();
+    if (data == NULL) {
+        return;
+    }
+
+    if (!HdfSbufWriteUint32(data, (uint32_t)(uintptr_t)handle)) {
+        HDF_LOGE("I2cClose: write handle fail!");
+        HdfSbufRecycle(data);
+        return;
+    }
+
+    ret = service->dispatcher->Dispatch(&service->object, I2C_IO_CLOSE, data, NULL);
+    if (ret != HDF_SUCCESS) {
+        HDF_LOGE("I2cClose: close handle fail:%d", ret);
+    }
+    HdfSbufRecycle(data);
+}
+
+static int32_t I2cMsgWriteArray(struct HdfSBuf *data, struct I2cMsg *msgs, int16_t count, uint32_t *recvLen)
+{
+    int16_t i;
+    struct I2cUserMsg userMsgs = {0};
+    *recvLen = 0;
+
+    if (!HdfSbufWriteInt16(data, count)) {
+        HDF_LOGE("I2cMsgWriteArray: write count fail!");
+        return HDF_ERR_IO;
+    }
+
+    for (i = 0; i < count; i++) {
+        userMsgs.addr = msgs[i].addr;
+        userMsgs.len = msgs[i].len;
+        userMsgs.flags = msgs[i].flags;
+        if (!HdfSbufWriteBuffer(data, &userMsgs, sizeof(struct I2cUserMsg))) {
+            HDF_LOGE("I2cMsgWriteArray: write userMsgs[%hd] buf fail!", i);
+            return HDF_ERR_IO;
+        }
+        (void)memset_s(&userMsgs, sizeof(struct I2cUserMsg), 0, sizeof(struct I2cUserMsg));
+
+        if ((msgs[i].flags & I2C_FLAG_READ) != 0) { // this buffer use to recv data after read data from kernel
+            *recvLen += msgs[i].len + sizeof(uint64_t);
+            continue;
+        }
+        if (!HdfSbufWriteBuffer(data, (uint8_t *)msgs[i].buf, msgs[i].len)) {
+            HDF_LOGE("I2cMsgWriteArray: write msg[%hd] buf fail!", i);
+            return HDF_ERR_IO;
+        }
+    }
+
+    return HDF_SUCCESS;
+}
+
+static int32_t I2cMsgReadBack(struct HdfSBuf *data, struct I2cMsg *msg)
+{
+    uint32_t rLen;
+    const void *rBuf = NULL;
+
+    if ((msg->flags & I2C_FLAG_READ) == 0) {
+        return HDF_SUCCESS; /* write msg no need to read back */
+    }
+
+    if (!HdfSbufReadBuffer(data, &rBuf, &rLen)) {
+        HDF_LOGE("I2cMsgReadBack: read rBuf fail!");
+        return HDF_ERR_IO;
+    }
+    if (msg->len != rLen) {
+        HDF_LOGW("I2cMsgReadBack: err len:%u, rLen:%u", msg->len, rLen);
+        if (rLen > msg->len) {
+            rLen = msg->len;
+        }
+    }
+    if (memcpy_s(msg->buf, msg->len, rBuf, rLen) != EOK) {
+        HDF_LOGE("I2cMsgReadBack: memcpy rBuf fail!");
+        return HDF_ERR_IO;
+    }
+
+    return HDF_SUCCESS;
+}
+
+static int32_t I2cMsgReadArray(struct HdfSBuf *reply, struct I2cMsg *msgs, int16_t count)
+{
+    int16_t i;
+    int32_t ret;
+
+    for (i = 0; i < count; i++) {
+        ret = I2cMsgReadBack(reply, &msgs[i]);
+        if (ret != HDF_SUCCESS) {
+            return ret;
+        }
+    }
+    return HDF_SUCCESS;
+}
+
+// user data format:handle---count---count data records of I2cUserMsg;
+static int32_t I2cServiceTransfer(DevHandle handle, struct I2cMsg *msgs, int16_t count)
+{
+    int32_t ret;
+    uint32_t recvLen = 0;
+    struct HdfSBuf *data = NULL;
+    struct HdfSBuf *reply = NULL;
+    struct HdfIoService *service = NULL;
+
+    data = HdfSbufObtainDefaultSize();
+    if (data == NULL) {
+        HDF_LOGE("I2cServiceTransfer: failed to obtain data!");
+        return HDF_ERR_MALLOC_FAIL;
+    }
+
+    if (!HdfSbufWriteUint32(data, (uint32_t)(uintptr_t)handle)) {
+        HDF_LOGE("I2cServiceTransfer: write handle fail!");
+        HdfSbufRecycle(data);
+        return HDF_FAILURE;
+    }
+    ret = I2cMsgWriteArray(data, msgs, count, &recvLen);
+    if (ret != HDF_SUCCESS) {
+        HDF_LOGE("I2cServiceTransfer: failed to write msgs!");
+        goto EXIT;
+    }
+
+    reply = (recvLen == 0) ? HdfSbufObtainDefaultSize() : HdfSbufObtain(recvLen);
+    if (reply == NULL) {
+        HDF_LOGE("I2cServiceTransfer: failed to obtain reply!");
+        ret = HDF_ERR_MALLOC_FAIL;
+        goto EXIT;
+    }
+
+    service = I2cManagerGetService();
+    if (service == NULL || service->dispatcher == NULL || service->dispatcher->Dispatch == NULL) {
+        ret = HDF_ERR_NOT_SUPPORT;
+        goto EXIT;
+    }
+    ret = service->dispatcher->Dispatch(&service->object, I2C_IO_TRANSFER, data, reply);
+    if (ret != HDF_SUCCESS) {
+        HDF_LOGE("I2cServiceTransfer: failed to send service call:%d", ret);
+        goto EXIT;
+    }
+
+    ret = I2cMsgReadArray(reply, msgs, count);
+    if (ret != HDF_SUCCESS) {
+        goto EXIT;
+    }
+
+    ret = count;
+EXIT:
+    HdfSbufRecycle(data);
+    HdfSbufRecycle(reply);
+    return ret;
+}
+
+int32_t I2cTransfer(DevHandle handle, struct I2cMsg *msgs, int16_t count)
+{
+    if (handle == NULL) {
+        return HDF_ERR_INVALID_OBJECT;
+    }
+
+    if (msgs == NULL || count <= 0) {
+        HDF_LOGE("I2cTransfer: err params! msgs:%s, count:%hd", (msgs == NULL) ? "0" : "x", count);
+        return HDF_ERR_INVALID_PARAM;
+    }
+
+    return I2cServiceTransfer(handle, msgs, count);
+}

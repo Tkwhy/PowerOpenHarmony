@@ -1,0 +1,10 @@
+import("//kernel/liteos_m/liteos.gni")
+source_set ("myapp") {
+    sources = [ 
+    #"apm32f4x_dbg_why.c"
+]
+    include_dirs = [
+        "//commonlibrary/utils_lite/include",
+        "//kernel/liteos_m/kernel/include/"
+    ]
+}

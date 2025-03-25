@@ -1,0 +1,65 @@
+# Copyright (c) 2021-2022 Hihope Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//kernel/liteos_m/liteos.gni")
+
+module_name = "apm32f4xx_sdk"
+
+kernel_module(module_name) {
+  asmflags = board_asmflags
+
+  sources = [
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_adc.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_can.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_comp.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_crc.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_cryp.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_cryp_aes.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_cryp_des.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_cryp_tdes.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_dac.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_dbgmcu.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_dci.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_dma.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_dmc.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_eint.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_fmc.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_gpio.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_hash.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_hash_md5.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_hash_sha1.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_i2c.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_iwdt.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_misc.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_pmu.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_qspi.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_rcm.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_rng.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_rtc.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_sdio.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_smc.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_spi.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_syscfg.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_tmr.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_usart.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_usb.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_usb_device.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_usb_host.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/apm32f4xx_wwdt.c",
+    "Drivers/APM32F4xx_StdPeriphDriver/src/bsp_delay.c",
+    "Drivers/APM32F4xx_ETH_Driver/src/apm32f4xx_eth.c",
+  ]
+  cflags = [
+    "-g"
+  ]
+}

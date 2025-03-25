@@ -1,0 +1,114 @@
+root {
+    device_info {
+        test_host :: host {
+            hostName = "test_host";
+            priority = 180;
+            device_hdf_test :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "HDF_TEST";
+                    serviceName = "HDF_TEST";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "sample_driver";
+                    serviceName = "sample_service";
+                }
+            }
+            device_platform_test :: device {
+                gpio_tester :: deviceNode {
+                    policy = 1;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_GPIO_TEST";
+                    deviceMatchAttr = "GPIO_TEST";
+                    serviceName = "GPIO_TEST";
+                }
+                i2c_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_I2C_TEST";
+                    deviceMatchAttr = "I2C_TEST";
+                    serviceName = "I2C_TEST";
+                }
+                watchdog_test :: deviceNode {
+                    policy = 1;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0660;
+                    moduleName = "PLATFORM_WATCHDOG_TEST";
+                    serviceName = "WATCHDOG_TEST";
+                    deviceMatchAttr = "WATCHDOG_TEST";
+                }
+            }
+            device_spi_test :: device {
+                spi_tester1 :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_SPI_TEST";
+                    serviceName = "SPI_TEST_1";
+                    deviceMatchAttr = "SPI_TEST_1";
+                }
+                spi_tester2 :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_SPI_TEST";
+                    serviceName = "SPI_TEST_2";
+                    deviceMatchAttr = "SPI_TEST_2";
+                }
+            }
+            device_uart_test :: device {
+                uart_tester1 :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_UART_TEST";
+                    serviceName = "UART_TEST_1";
+                    deviceMatchAttr = "UART_TEST_1";
+                }
+                uart_tester2 :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_UART_TEST";
+                    serviceName = "UART_TEST_2";
+                    deviceMatchAttr = "UART_TEST_2";
+                }
+                uart_tester3 :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_UART_TEST";
+                    serviceName = "UART_TEST_3";
+                    deviceMatchAttr = "UART_TEST_3";
+                }
+	    }
+            device_sensor_test :: device {
+                sensor_tester :: deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "HDF_SENSOR_TEST_DRIVER";
+                }
+            }
+        }
+    }
+}
+

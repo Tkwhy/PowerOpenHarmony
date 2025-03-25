@@ -1,0 +1,15 @@
+import("//kernel/liteos_m/liteos.gni")
+source_set ("myapp") {
+    sources = [ 
+    #"apm32f4x_can_why.c"
+]
+    include_dirs = [
+        "//commonlibrary/utils_lite/include",
+        "//kernel/liteos_m/kernel/include/"
+    ]
+    cflags = [
+        "-u _printf_float",  # 添加对浮点数支持的编译器选项
+        "-mfpu=fpv4-sp-d16", # 指定浮点运算单元（根据你的硬件配置选择合适的选项）
+        "-mfloat-abi=hard"   # 使用硬件浮点 ABI（根据你的硬件配置选择合适的选项）
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "device_hdsc": {
+      "module_list": [
+        "//device/soc/hdsc:hdsc"
+      ]
+    }
+  },
+  "subsystem": "device_hdsc"
+}

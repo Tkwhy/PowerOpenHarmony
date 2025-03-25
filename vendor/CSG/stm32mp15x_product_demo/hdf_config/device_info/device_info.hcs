@@ -1,0 +1,162 @@
+ root {
+    device_info {
+        match_attr = "hdf_manager";
+        template host {
+            hostName = "";
+            priority = 100;
+            template device {
+                template deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "";
+                    serviceName = "";
+                    deviceMatchAttr = "";
+                }
+            }
+        }
+        platform :: host {
+            hostName = "platform_host";
+            priority = 50;
+            device_gpio :: device {
+                device0 :: deviceNode {
+                    policy = 0;
+                    priority = 10;
+                    permission = 0644;
+                    moduleName = "linux_gpio_adapter";
+                    deviceMatchAttr = "linux_gpio_adapter";
+                }
+            }
+            device_watchdog :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 20;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_WATCHDOG";
+                    serviceName = "HDF_PLATFORM_WATCHDOG_0";
+                    deviceMatchAttr = "st_stm32mp157_watchdog_0";
+                }
+            }
+
+            device_uart :: device {
+                /*device0 :: deviceNode {
+                    policy = 2;
+                    priority = 40;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_UART";
+                    serviceName = "HDF_PLATFORM_UART_1";
+                    deviceMatchAttr = "st_stm32mp157_uart_1";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    permission = 0644;
+                    priority = 40;
+                    moduleName = "HDF_PLATFORM_UART";
+                    serviceName = "HDF_PLATFORM_UART_2";
+                    deviceMatchAttr = "st_stm32mp157_uart_2";
+                }*/
+                device2 :: deviceNode {
+                    policy = 2;
+                    permission = 0644;
+                    priority = 40;
+                    moduleName = "HDF_PLATFORM_UART";
+                    serviceName = "HDF_PLATFORM_UART_3";
+                    deviceMatchAttr = "st_stm32mp157_uart_3";
+                }
+               device3 :: deviceNode {
+                    policy = 2;
+                    permission = 0644;
+                    priority = 40;
+                    moduleName = "HDF_PLATFORM_UART";
+                    serviceName = "HDF_PLATFORM_UART_4";
+                    deviceMatchAttr = "st_stm32mp157_uart_4";
+                }
+               device4 :: deviceNode {
+                    policy = 2;
+                    permission = 0644;
+                    priority = 40;
+                    moduleName = "HDF_PLATFORM_UART";
+                    serviceName = "HDF_PLATFORM_UART_5";
+                    deviceMatchAttr = "st_stm32mp157_uart_5";
+                }
+               /*device5 :: deviceNode {
+                    policy = 2;
+                    permission = 0644;
+                    priority = 40;
+                    moduleName = "HDF_PLATFORM_UART";
+                    serviceName = "HDF_PLATFORM_UART_6";
+                    deviceMatchAttr = "st_stm32mp157_uart_6";
+                }
+               device6 :: deviceNode {
+                    policy = 2;
+                    permission = 0644;
+                    priority = 40;
+                    moduleName = "HDF_PLATFORM_UART";
+                    serviceName = "HDF_PLATFORM_UART_7";
+                    deviceMatchAttr = "st_stm32mp157_uart_7";
+                }*/
+            }
+
+            device_i2c :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 50;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_I2C_MANAGER";
+                    serviceName = "HDF_PLATFORM_I2C_MANAGER";
+                    deviceMatchAttr = "hdf_platform_i2c_manager";
+                }
+                device1 :: deviceNode {
+                    policy = 0;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "linux_i2c_adapter";
+                    deviceMatchAttr = "linux_i2c_adapter";
+                }
+            }
+            device_spi :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 60;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_SPI";
+                    serviceName = "HDF_PLATFORM_SPI_1";
+                    deviceMatchAttr = "st_stm32mp157_spi_1";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 60;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_SPI";
+                    serviceName = "HDF_PLATFORM_SPI_2";
+                    deviceMatchAttr = "st_stm32mp157_spi_2";
+                }
+                device2 :: deviceNode {
+                    policy = 2;
+                    priority = 60;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_SPI";
+                    serviceName = "HDF_PLATFORM_SPI_3";
+                    deviceMatchAttr = "st_stm32mp157_spi_3";
+                }
+                device3 :: deviceNode {
+                    policy = 2;
+                    priority = 60;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_SPI";
+                    serviceName = "HDF_PLATFORM_SPI_4";
+                    deviceMatchAttr = "st_stm32mp157_spi_4";
+                }
+                device4 :: deviceNode {
+                    policy = 2;
+                    priority = 60;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_SPI";
+                    serviceName = "HDF_PLATFORM_SPI_5";
+                    deviceMatchAttr = "st_stm32mp157_spi_5";
+                }
+            }
+        }
+    }
+}

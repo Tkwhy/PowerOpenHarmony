@@ -1,0 +1,12 @@
+# Copyright (C) 2020 Hisilicon (Shanghai) Technologies Co., Ltd. All rights reserved.
+
+group("stm32mp15x_product_demo") {
+  deps = [
+    "m4",
+    "hals/utils/sys_param:vendor.para",
+    "init_configs",
+    "init_configs:init_initd",
+    "init_configs:init_fstab",
+    "sample",
+  ]
+}

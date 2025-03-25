@@ -1,0 +1,10 @@
+{
+    "subsystem":"device_gd32f4xx_board",
+    "parts": {
+        "device_gd32f4xx_board": {
+            "module_list": [
+                "//device/board/csg/gd32f4xx_board:process_after_build"
+            ]
+        }
+    }
+}

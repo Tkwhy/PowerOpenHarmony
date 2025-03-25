@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "product_stm32mp15x_product_demo": {
+      "module_list": [
+        "//vendor/CSG/stm32mp15x_product_demo:stm32mp15x_product_demo"
+      ]
+    }
+  },
+  "subsystem": "product_stm32mp15x_product_demo"
+}

@@ -1,0 +1,130 @@
+{
+    "product_name": "stm32mp15x_product_demo",
+    "version": "3.0",
+    "type": "small",
+    "ohos_version": "OpenHarmony 4.0",
+    "device_company": "csg",
+    "device_build_path": "device/board/csg/stm32mp15x_board",
+    "board": "stm32mp15x_board",
+    "api_version": 8,
+    "kernel_type": "linux",
+    "kernel_version": "5.10",
+    "subsystems": [
+      {
+        "subsystem": "arkui",
+        "components": [
+          { "component": "ace_engine_lite", "features":[ "" ] },
+          { "component": "ui_lite", "features":[ "enable_graphic_font = true","enable_video_component=false"] }
+        ]
+      },
+      {
+        "subsystem": "systemabilitymgr",
+        "components": [
+          { "component": "samgr_lite", "features":[] },
+          { "component": "safwk_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hilog_featured_lite", "features":[] },
+          { "component": "faultloggerd", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "security",
+        "components": [
+          { "component": "permission_lite", "features":[] },
+          { "component": "device_auth", "features":[] },
+          { "component": "huks", "features":
+            [
+              "huks_config_file = \"hks_config_small.h\"",
+              "huks_uid_trust_list_define = \"{}\""
+            ]
+          }
+        ]
+      },
+
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "bootstrap_lite", "features":[] },
+          { "component": "init_lite", "features":["enable_ohos_startup_init_feature_begetctl_liteos=true"] },
+          { "component": "appspawn_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "kernel",
+        "components": [
+          { "component": "linux", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "communication",
+        "components": [
+          { "component": "dsoftbus", "features":[] },
+          { "component": "wpa_supplicant", "features":[] },
+          { "component": "wifi", "features":[] },
+          { "component": "dhcp", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hdf",
+        "components": [
+          { "component": "hdf_core", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "ability",
+        "components": [
+          { "component": "ability_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = true" ] },
+          { "component": "dmsfwk_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "bundlemanager",
+        "components": [
+          { "component": "bundle_framework_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "powermgr",
+        "components": [
+          { "component": "powermgr_lite", "features":[ "enable_screensaver = false" ] }
+        ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "syscap_codec", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "global",
+        "components": [
+        ]
+      },
+      {
+        "subsystem": "xts",
+        "components": [
+          { "component": "developer_test", "features":[] },
+          { "component": "acts", "features":[] },
+          { "component": "tools", "features":[] },
+          { "component": "device_attest_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributedhardware",
+        "components": [
+          { "component": "device_manager", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributeddatamgr",
+        "components": [
+        ]
+      }
+    ],
+    "third_party_dir": "//third_party",
+    "product_adapter_dir": "//vendor/CSG/stm32mp15x_product_demo/hals"
+  }

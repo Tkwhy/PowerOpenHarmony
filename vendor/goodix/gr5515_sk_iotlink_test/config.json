@@ -1,0 +1,73 @@
+{
+  "product_name": "gr5515_sk_iotlink_test",
+  "ohos_version": "OpenHarmony 1.0",
+  "device_company": "goodix",
+  "board": "gr5515_sk",
+  "kernel_type": "liteos_m",
+  "kernel_version": "3.0.0",
+  "subsystems": [
+    {
+      "subsystem": "kernel",
+      "components": [
+        { "component": "liteos_m" }
+      ]
+    },
+    {
+      "subsystem": "hiviewdfx",
+      "components": [
+        { "component": "hilog_lite", "features":[] },
+        { "component": "hievent_lite", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "systemabilitymgr",
+      "components": [
+        { "component": "samgr_lite", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "startup",
+      "components": [
+        { "component": "bootstrap_lite", "features":[] },
+        {
+          "component": "init_lite",
+          "features": [
+            "enable_ohos_startup_init_feature_begetctl_liteos = true"
+          ]
+        }
+      ]
+    },
+    {
+      "subsystem": "commonlibrary",
+      "components": [
+        { "component": "utils_lite", "features":[ "utils_lite_feature_file = true" ] }
+      ]
+    },
+    {
+      "subsystem": "communication",
+      "components": [
+        {
+          "component": "dsoftbus_ph",
+            "features": []
+        }
+      ]
+    },
+    {
+      "subsystem": "security",
+      "components": [
+        { "component": "huks", "features": 
+          [
+            "disable_huks_binary  = true",
+            "disable_authenticate = false",
+            "huks_use_lite_storage = false",
+            "huks_use_hardware_root_key = false",
+            "huks_config_file = \"hks_config_lite.h\""
+          ]
+        }
+      ]
+    }
+  ],
+  "third_party_dir": "",
+  "vendor_adapter_dir": "//device/soc/goodix/gr551x/adapter",
+  "product_adapter_dir": "//vendor/goodix/gr5515_sk_iotlink_test/hals"
+}

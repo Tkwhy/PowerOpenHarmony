@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/home/why/Desktop/PowerHarmony_PHM_SDK_V1.0.1.0/kernel/liteos_m/**",
+                "/home/why/Desktop/PowerHarmony_PHM_SDK_V1.0.1.0/device/board/csg/apm32f4_board/liteos_m/bsp/include",
+                "/home/why/Desktop/PowerHarmony_PHM_SDK_V1.0.1.0/device/soc/apm/**",
+                "/home/why/Desktop/PowerHarmony_PHM_SDK_V1.0.1.0/commonlibrary/utils_lite/include",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

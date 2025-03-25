@@ -1,0 +1,1 @@
+cmd_drivers/hdf/khdf/../../../../../vendor/WASION/DTU/hdf_config/hdf_test/modules.order := {  :; } | awk '!x[$$0]++' - > drivers/hdf/khdf/../../../../../vendor/WASION/DTU/hdf_config/hdf_test/modules.order

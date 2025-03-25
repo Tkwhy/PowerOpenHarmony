@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2022 Huawei Device Co., Ltd.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+    This is the configuration file template for OpenHarmony OSS Audit Tool, please copy it to your project root dir and modify it refer to OpenHarmony/tools_oat/README.
+    All configurations in this file will be merged to OAT-Default.xml, if you have any questions or concerns, please create issue in OpenHarmony/tools_oat and @jalenchen or chenyaxun.
+
+    licensefile:
+    1.If the project don't have "LICENSE" in root dir, please define all the license files in this project in , OAT will check license files according to this rule.
+
+    policylist:
+    1. policy: If the OAT-Default.xml policies do not meet your requirements, please add policies here.
+    2. policyitem: The fields type, name, path, desc is required, and the fields rule, group, filefilter is optional,the default value is:
+    <policyitem type="" name="" path="" desc="" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter"/>
+    3. policyitem type:
+        "compatibility" is used to check license compatibility in the specified path;
+        "license" is used to check source license header in the specified path;
+        "copyright" is used to check source copyright header in the specified path;
+        "import" is used to check source dependency in the specified path, such as import ... ,include ...
+        "filetype" is used to check file type in the specified path, supported file types: archive, binary
+        "filename" is used to check whether the specified file exists in the specified path(projectroot means the root dir of the project), supported file names: LICENSE, README, README.OpenSource
+    4. policyitem name: This field is used for define the license, copyright, "*" means match all, the "!" prefix means could not match this value. For example, "!GPL" means can not use GPL license.
+    5. policyitem path: This field is used for define the source file scope to apply this policyitem, the "!" prefix means exclude the files. For example, "!.*/lib/.*" means files in lib dir will be exclude while process this policyitem.
+    6. policyitem rule and group: These two fields are used together to merge policy results. "may" policyitems in the same group means any one in this group passed, the result will be passed.
+    7. policyitem filefilter: Used to bind filefilter which define filter rules.
+    7. policyitem desc: Used to describe the reason of this policy item, committers will check this while merging the code.
+    8. filefilter: Filter rules, the type filename is used to filter file name, the type filepath is used to filter file path.
+
+    Note:If the text contains special characters, please escape them according to the following rules:
+    " == &quot;
+    & == &amp;
+    ' == &apos;
+    < == &lt;
+    > == &gt;
+-->
+
+<configuration>
+    <oatconfig>
+        <licensefile></licensefile>
+        <policylist>
+            <policy name="projectPolicy" desc="">
+                <policyitem type="copyright" name="Hunan OpenValley Digital Industry Development Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="Developed By Hunan OpenValley Digital Industry Development."/>
+                <policyitem type="license" name="BSDStyleLicense" path=".*"  desc="License Header Invalid"/>
+                <policyitem type="license" name="MIT" path=".*"  desc="License Header Invalid"/>
+                <policyitem type="license" name="BSD-4-Clause" path=".*"  desc="License Header Invalid"/>
+                <policyitem type="license" name="BSD-2-Clause" path=".*"  desc="License Header Invalid"/>
+                <policyitem type="license" name="GPLStyleLicense" path=".*"  desc="License Header Invalid"/>
+                <policyitem type="license" name="GPL-2.0-or-later" path=".*"  desc="License Header Invalid"/>
+                <policyitem type="license" name="GPL-2.0+" path=".*"  desc="License Header Invalid"/>
+                <policyitem type="license" name="BSD-3-Clause" path=".*"  desc="License Header Invalid"/>
+                <policyitem type="copyright" name="Espressif Systems (Shanghai) PTE LTD" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="The Android Open Source Project" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Google, Inc." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Amazon.com, Inc. or its affiliates.  All Rights Reserved." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Real Time Engineers Ltd." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Simon Goldschmidt" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Swedish Institute of Computer Science." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Dominik Spies &lt;kontakt@dspies.de&gt;" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Inico Technologies Ltd." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Open Interface North America, Inc. All rights reserved." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Axon Digital Design B.V., The Netherlands." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Erik Andersson" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Elias Oenal." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Paul Mackerras. All rights reserved." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Tensilica Inc." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Huawei Technologies Co., Ltd. All rights reserved." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Espressif Systems." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="by Tensilica Inc." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Cadence Design Systems, Inc." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Verisure Innovation AB" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Eric Rosenquist.  All rights reserved." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Cunningham, Garmin International, Inc.  &lt;joel.cunningham@garmin.com&gt;" path=".*"  desc="copyright Header Invalid"/>   
+                <policyitem type="copyright" name="CITEL Technologies Ltd." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Eric Rosenquist.  All rights reserved." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Joel Cunningham, Garmin International, Inc. &lt;joel.cunningham@garmin.com&gt;" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Carnegie Mellon University. All rights reserved." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Angus Gratton" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Fredrik Ahlberg, Angus Gratton, other contributors as noted." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Cozybit, Inc." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Cadence Design Systems Inc." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Elias Oenal and Dirk Ziegelmeier." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Tommi Komulainen.  All rights reserved." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Regents of the University of California." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Cadence Design Systems Inc." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Espressif Systems (Shanghai) Co., Ltd." path=".*"  desc="copyright Header Invalid"/>  
+                <policyitem type="copyright" name="Broadcom Corporation" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="The MINIX 3 Project." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Espressif Systems (Shanghai) CO LTD &amp; Cesanta Software Limited" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Dirk Ziegelmeier." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Dirk Ziegelmeier" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Espressif Systems (shanghai) PTE LTD" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Espressif Systems (Shanghai) Co. Ltd." path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Intel Corporation" path=".*"  desc="copyright Header Invalid"/> 
+                <policyitem type="copyright" name="Uwe Stuehler &lt;uwe@openbsd.org&gt;" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Leon Woestenberg &lt;leon.woestenberg@gmx.net&gt;" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Swedish Institute of Computer Science." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="by Sun Microsystems, Inc." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="by Marc Boucher, Services Informatiques (MBSI) inc." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Global Election Systems Inc." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="by Cognizant Pty Ltd." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Leon Woestenberg &lt;leon.woestenberg@axon.tv&gt;" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="RAD Game Tools and Valve Software" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Rich Geldreich and Tenacious Software LLC" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="The NetBSD Foundation, Inc." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Christophe Devine" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Paul Bakker &lt;polarssl_maintainer at polarssl dot org&gt;" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Thomas Moestl &lt;tmm@FreeBSD.org&gt;" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Benjamin Aigner" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Inico Technologies Ltd. , Author: Ivan Delamer &lt;delamer@inicotech.com&gt;" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Francis.Dupont@inria.fr, INRIA Rocquencourt," path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Francis.Dupont@inria.fr, GIE DYADE," path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Espressif Systems (Shanghai) PTE LTD" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Francesco Giancane &lt;francesco.giancane@accenture.com&gt;" path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="The Open Group&quot;." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="by Marc Boucher, Services Informatiques (MBSI) inc." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="by Global Election Systems Inc." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="The Australian National University." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Carnegie Mellon University." path=".*"  desc="copyright Header Invalid"/>
+                <policyitem type="copyright" name="Kungliga Tekniska Högskolan" path=".*"  desc="copyright Header Invalid"/>
+            </policy>
+        </policylist>
+        <filefilterlist>
+            <filefilter name="defaultPolicyFilter" desc="Filters for compatibility，license header policies">
+                <filteritem type="filepath" name="EULA" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/libc_stubs.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/soc/lldesc.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/Makefile.files" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/driver/include/driver/sdmmc_types.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/freertos/include/freertos/semphr.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/sdmmc/include/sdmmc_cmd.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/btc/profile/esp/blufi/bluedroid_host/esp_blufi.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/driver/include/driver/sdmmc_defs.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/lldesc.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/osal/port/xtensa/include/esp_osal/xtensa_api.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_singleapp.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/freertos/include/freertos/task.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/controller/lib_esp32/README.rst" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/md5_hash.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/newlib.lf" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_singleapp_coredump.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/soc/soc_include_legacy_warn.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/driver/include/driver/sdmmc_types.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/miniz.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_system/port/include/intr.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/osal/port/xtensa/include/esp_osal/xtensa_context.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_singleapp_encr_nvs.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/flash_mock.cpp" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader_support/include/esp_flash_data_types.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/btc/profile/esp/blufi/include/esp_blufi.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/queue.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_two_ota.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/flash_mock_util.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/host/bluedroid/stack/smp/include/aes.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/rtc.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_common/Kconfig.spiram.common" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_wifi/lib/tools/ci/build_app.sh" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/pthread.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/platform_include/sys/lock.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_two_ota_coredump.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/sdkconfig/sdkconfig.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/esp32/esp_random.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/log/log.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/btc/profile/esp/blufi/nimble_host/esp_blufi.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/osi/include/osi/list.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/secure_boot.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_two_ota_encr_nvs.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/log/include/esp_log.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/sha.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/Makefile.files" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/osi/include/osi/osi.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/spi_flash.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_event/include/esp_event_loop.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/app_update/esp_ota_eps.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/osi/list.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/host/bluedroid/btc/core/btc_sec.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/host/bluedroid/stack/smp/aes.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/aes.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/tbconsole.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_wifi/lib/fix_printf.sh" desc=""/>
+                <filteritem type="filepath" name="esp32/components/nvs_flash/include/nvs_handle.hpp" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/esp_timer/include/esp_timer.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/newlib/lock.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/vfs/include/esp_vfs.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/bigint.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/tjpgd.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/newlib/include/sys/lock.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/host/bluedroid/hci/hci_audio.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/efuse/esp32/esp_efuse_table.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/cache.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/uart.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/esp_clk.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/crc.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_common/src/esp_err_to_name.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/osal/include/esp_osal/stdint.readme" desc=""/>
+                <filteritem type="filepath" name="esp32/components/osal/include/esp_osal/croutine.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/COPYING.NEWLIB" desc=""/>
+                <filteritem type="filepath" name="esp32/components/app_update/Kconfig.projbuild" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/esp_himem.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/efuse.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/ets_sys.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/ld/esp32_fragments.lf" desc=""/>
+                <filteritem type="filepath" name="esp32/components/nvs_flash/src/nvs_partition_lookup.cpp" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/freertos/include/freertos/FreeRTOS.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/sdkconfig/sdkconfig.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/linker.lf" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/esp_spiram.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/gpio.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/esp32-spiram-rom-functions-c.lf" desc=""/>
+                <filteritem type="filepath" name="esp32/components/nvs_flash/src/nvs_partition_lookup.hpp" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/driver/include/driver/sdmmc_host.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/freertos/include/freertos/projdefs.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/platform_include/sys/time.h" desc=""/>
+            </filefilter>
+            <filefilter name="copyrightPolicyFilter" desc="Filters for copyright header policies">
+                <filteritem type="filepath" name="EULA" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/uECC.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/libc_stubs.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/soc/lldesc.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/driver/include/driver/sdmmc_types.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/freertos/include/freertos/semphr.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/sdmmc/include/sdmmc_cmd.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/uECC_vli.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/btc/profile/esp/blufi/bluedroid_host/esp_blufi.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/lldesc.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/osal/port/xtensa/include/esp_osal/xtensa_api.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_singleapp.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/freertos/include/freertos/task.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/md5_hash.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/heap/heap_tlsf.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/newlib.lf" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_singleapp_coredump.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/soc/soc_include_legacy_warn.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/miniz.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_system/port/include/intr.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/osal/port/xtensa/include/esp_osal/xtensa_context.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/heap/heap_tlsf.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_singleapp_encr_nvs.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/flash_mock.cpp" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader_support/include/esp_flash_data_types.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/btc/profile/esp/blufi/include/esp_blufi.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/queue.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_rom/include/esp32/rom/md5_hash.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/heap/heap_tlsf_block_functions.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_two_ota.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/flash_mock_util.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/host/bluedroid/stack/smp/include/aes.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/rtc.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/heap/heap_tlsf_config.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/pthread.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/platform_include/sys/lock.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_two_ota_coredump.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/sdkconfig/sdkconfig.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/esp32/esp_random.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/log/log.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/uECC_verify_antifault.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/btc/profile/esp/blufi/nimble_host/esp_blufi.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/osi/include/osi/list.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/secure_boot.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_lwip/port/include/arch/cc.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/partition_table/partitions_two_ota_encr_nvs.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/log/include/esp_log.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/asm_arm.inc" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/sha.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/Makefile.files" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/asm_arm_mult_square.inc" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/osi/include/osi/osi.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/spi_flash.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_event/include/esp_event_loop.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/app_update/esp_ota_eps.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/asm_arm_mult_square_umaal.inc" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/common/osi/list.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/host/bluedroid/btc/core/btc_sec.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/host/bluedroid/stack/smp/aes.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/aes.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/tbconsole.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_wifi/lib/fix_printf.sh" desc=""/>
+                <filteritem type="filepath" name="esp32/components/nvs_flash/include/nvs_handle.hpp" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/esp_timer/include/esp_timer.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/newlib/lock.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/vfs/include/esp_vfs.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/asm_avr.inc" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/bigint.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/tjpgd.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/newlib/include/sys/lock.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/asm_avr_mult_square.inc" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/host/bluedroid/hci/hci_audio.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/efuse/esp32/esp_efuse_table.csv" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/cache.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/uart.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/platform_include/sys/time.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/curve-specific.inc" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/esp_clk.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/crc.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp_common/src/esp_err_to_name.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/osal/include/esp_osal/stdint.readme" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/COPYING.NEWLIB" desc=""/>
+                <filteritem type="filepath" name="esp32/components/app_update/Kconfig.projbuild" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/platform-specific.inc" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/esp_himem.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/efuse.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/types.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/ets_sys.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/ld/esp32_fragments.lf" desc=""/>
+                <filteritem type="filepath" name="esp32/components/nvs_flash/src/nvs_partition_lookup.cpp" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/freertos/include/freertos/FreeRTOS.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/sdkconfig/sdkconfig.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bootloader/subproject/components/micro-ecc/micro-ecc/uECC.c" desc=""/>
+                <filteritem type="filepath" name="esp32/components/bt/linker.lf" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/esp_spiram.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/esp32/include/rom/gpio.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/newlib/esp32-spiram-rom-functions-c.lf" desc=""/>
+                <filteritem type="filepath" name="esp32/components/nvs_flash/src/nvs_partition_lookup.hpp" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/driver/include/driver/sdmmc_host.h" desc=""/>
+                <filteritem type="filepath" name="esp32/components/spi_flash/sim/stubs/freertos/include/freertos/projdefs.h" desc=""/>
+            </filefilter>
+            <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binaryFile" >
+                <filteritem type="filename" name="*.png" desc="all so file have check "/>
+                <filteritem type="filepath" name="esp32/components/libs/libbtdm_app.a" desc=""/>
+                <filteritem type="filepath" name="esp32/components/libs/libcore.a" desc=""/>
+                <filteritem type="filepath" name="esp32/components/libs/libnet80211.a" desc=""/>
+                <filteritem type="filepath" name="esp32/components/libs/libphy.a" desc=""/>
+                <filteritem type="filepath" name="esp32/components/libs/libpp.a" desc=""/>
+                <filteritem type="filepath" name="esp32/components/libs/librtc.a" desc=""/>
+                <filteritem type="filepath" name="esp32/components/libs/libxt_hal.a" desc=""/>
+            </filefilter>
+        </filefilterlist>
+    </oatconfig>
+</configuration>

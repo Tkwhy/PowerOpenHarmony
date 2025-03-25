@@ -1,0 +1,1 @@
+cmd_drivers/hdf/khdf/../../../../vendor/hihope/stm32mp151_linux/hdf_config/built-in.a := rm -f drivers/hdf/khdf/../../../../vendor/hihope/stm32mp151_linux/hdf_config/built-in.a; arm-linux-gnueabi-ar cDPrST drivers/hdf/khdf/../../../../vendor/hihope/stm32mp151_linux/hdf_config/built-in.a drivers/hdf/khdf/../../../../vendor/hihope/stm32mp151_linux/hdf_config/hdf_hcs_hex.o
