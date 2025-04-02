@@ -23,7 +23,6 @@ kernel_module(module_name) {
     "src/apm32f4xx_int.c",
     "src/Board_APM32F407_EVAL.c",
     "src/dprintf.c",
-    #"src/helloWord.c",
   ]
 
   include_dirs = [

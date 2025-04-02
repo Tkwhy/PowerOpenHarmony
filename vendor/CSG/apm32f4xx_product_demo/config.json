@@ -128,10 +128,6 @@
         {
           "component": "apm32f407_dbg",
           "features": []
-        },
-        {
-          "component": "apm32f407_eth",
-          "features": []
         }
       ]
     }

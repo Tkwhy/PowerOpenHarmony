@@ -1,16 +1,16 @@
 {
-    "name": "@ohos/apm32f407_eth",
-    "description": "Wifi iot my first samples.",
+    "name": "@ohos/wifi_iot_sample_app",
+    "description": "Wifi iot samples.",
     "version": "3.1",
     "license": "Apache License 2.0",
     "publishAs": "code-segment",
     "segment": {
-        "destPath": "applications/sample/apm32f407_eth"
+        "destPath": "applications/sample/wifi-iot/app"
     },
     "dirs": {},
     "scripts": {},
     "component": {
-        "name": "apm32f407_eth",
+        "name": "wifi_iot_sample_app",
         "subsystem": "applications",
         "syscap": [],
         "features": [],
@@ -27,7 +27,7 @@
         },
         "build": {
             "sub_component": [
-                "//applications/sample/apm32f407_eth:myapp"
+                "//applications/sample/wifi-iot/app:app"
             ],
             "inner_kits": [],
             "test": []
